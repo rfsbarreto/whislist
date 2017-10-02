@@ -73,36 +73,6 @@ class HomeController {
                     }
 	}
 	
-//	fun getVenuePhotoURL(venueID: String,today: String, token: String): String{
-//		val url = URL("https://api.foursquare.com/v2/venues/$venueID?oauth_token=$token&v=+$today")
-//		var urlPhoto: String  = ""
-//		with(url.openConnection() as HttpURLConnection){
-//                        requestMethod = "GET"
-//                        println("\nSending 'GET' request to URL : $url")
-//                        println("Response Code : $responseCode")
-//                        try{
-//	                        connect()
-//	                        inputStream.bufferedReader().use {
-//								try{
-//		                            var inputLine = it.readLine()
-//		                            val obj = JSONObject(inputLine).getJSONObject("response").getJSONObject("venue")
-//									val bestPhoto = obj.getJSONObject("bestPhoto")
-//									urlPhoto = bestPhoto.getString("prefix") + bestPhoto.getInt("width").toString() + "x" + bestPhoto.getInt("height").toString() + bestPhoto.getString("suffix")
-//								} catch (e: JSONException){
-//										e.printStackTrace()
-//								}
-//								
-//								return urlPhoto
-//								
-//	                        }
-//                        }catch(e: Exception){
-//							e.printStackTrace()
-//							return "http://picture-cdn.wheretoget.it/8yl60v-i.jpg"
-//						} 
-//		}		
-//                        
-//	}
-	
 	fun getMyUser( token: String): User {
 		val today = SimpleDateFormat("yyyyMMdd").format(Date())
 		val url = URL("https://api.foursquare.com/v2/users/self?oauth_token=$token&v=+$today")
