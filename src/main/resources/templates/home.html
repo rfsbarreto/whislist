@@ -5,34 +5,42 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
   	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+  	<script th:inline="javascript">
+  		var token = [[${token}]];
+  	</script>
 </head>
 <body>
 	<div id="recent"></div>
 	<div class="container">
+  	  
+  	  <div class="row" style="height:70px">
+		  <div class="col-md-10">
+		  	<h2>Whislist</h2>
+		  </div>
+		  <div class="col-md-1">
+		  	<h1 th:text="${user.name}"  align="left" style="font-size:20px"/>
+		  </div>	  	
+		  <div class="col-md-1">
+		  <div class="container">
+		  	<img th:src="${user.photoUrl}" alt="Lights" style="width:70px;height:70px;margin-top: 2px"  class="img-rounded" />
+		  </div>
+		  </div>	  		  	
+  	  </div>
   	  <h2>Recents</h2>
-	  <div class="row" >
-	    <div class="col-md-3"  th:each="data,iter : ${recentList}">
+	  <div class="row"  th:each="data, row: ${recentList}" th:with="numList=${#strings.listSplit('3,2,1,0', ',')}" th:if="${row.count} % 4 == 0" >
+	    <div class="col-md-3"  th:each="num : ${numList}" th:with="dataIndex=(${row.index} - ${num})" >
 	      <div class="thumbnail">
-	        <a th:href="${data.venuePhoto}" target="_blank">
-	          <img th:src="${data.venuePhoto}" alt="Lights" style="width:100%" />
+	        <a th:href="${recentList[dataIndex].venuePhoto}" target="_blank">
+	          <img th:src="${recentList[dataIndex].venuePhoto}" alt="Lights" style="width:100%;maxheight:200px"  />
 	          <div class="caption">
-	            <p th:text="${data.firstName}"></p>
-	            <p th:text="${data.venueName}"></p>
+	            <p th:text="${recentList[dataIndex].firstName}"></p>
+	            <p th:text="${recentList[dataIndex].venueName}"></p>
 	          </div>
 	        </a>
 	      </div>
 	    </div>
 	  </div>
 	</div>
-	<!-- <table border="1px solid" th:each="data : ${recentList}">
-		<tr>
-        	<td th:text="${data.firstName}"></td>
-        	<td th:text="${data.venueName}"></td>
-        	  td th:text="${data.venuePhoto}"></td>
-        	 <td><img class="venue" th:src="${data.venuePhoto}" /> </td>
-    	</tr>
-	</table>-->
-	 
 	
 
 
@@ -40,7 +48,6 @@
  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/galleria/1.5.7/galleria.min.js"></script>
 <script type="text/javascript" src="js/home.js"></script>
 </body>
 </html>
