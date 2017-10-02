@@ -7,6 +7,7 @@
   	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
   	<script th:inline="javascript">
   		var token = [[${token}]];
+  		var recentList = [[${recentList}]];
   	</script>
 </head>
 <body>
@@ -26,12 +27,13 @@
 		  </div>
 		  </div>	  		  	
   	  </div>
+  	  
   	  <h2>Recents</h2>
 	  <div class="row"  th:each="data, row: ${recentList}" th:with="numList=${#strings.listSplit('3,2,1,0', ',')}" th:if="${row.count} % 4 == 0" >
 	    <div class="col-md-3"  th:each="num : ${numList}" th:with="dataIndex=(${row.index} - ${num})" >
 	      <div class="thumbnail">
-	        <a th:href="${recentList[dataIndex].venuePhoto}" target="_blank">
-	          <img th:src="${recentList[dataIndex].venuePhoto}" alt="Lights" style="width:100%;maxheight:200px"  />
+	        <a th:href="${recentList[dataIndex].venueId}" target="_blank">
+	          <img class="venueImg" th:id="${recentList[dataIndex].venueId}" alt="Lights" style="width:100%;maxheight:200px"  />
 	          <div class="caption">
 	            <p th:text="${recentList[dataIndex].firstName}"></p>
 	            <p th:text="${recentList[dataIndex].venueName}"></p>
