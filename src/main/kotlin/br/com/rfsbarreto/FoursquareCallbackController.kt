@@ -39,7 +39,7 @@ class FoursquareCallbackController {
 
                 }
 		if (token.isNotEmpty()){
-			rattr.addAttribute("token",token)
+			rattr.addFlashAttribute("token",token)
 			return "redirect:/home.html"
 		} else
 			return "error"
