@@ -17,8 +17,8 @@ class FoursquareCallbackController {
 		var token: String = ""
 		code.let {
                     val url = URL("https://foursquare.com/oauth2/access_token"+
-                    "?client_id=IIFMMASNLTXM000XEKIP1H5ORRFZNL2KMOC1N43SBYJRRAE3"+
-                    "&client_secret=VCSSDWVOOCA23APFUD4JDZJPN32JCBYUAAEF2NEUOEUYPUJE"+
+                    "?client_id=UWK204OQ0PELRWTYNEOFBW43GL5UIBJ2EPXWCU4HTU3HK0VQ"+
+                    "&client_secret=3PBZRZWBTJUKFB11QYNBCXAGMQX1HJD5JBEOK4IRBVWNHFWU"+
                     "&grant_type=authorization_code"+
                     "&redirect_uri=http://localhost:3000/foursquare/callback"+
                     "&code=$code")
